@@ -1,0 +1,77 @@
+﻿@model MemberRegistration.Entities.Concrete.SmtpSettings
+@{
+    ViewBag.Title = "Mail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<body style="background-color:silver">
+    <div class="container" style="background-color:lightslategray;margin-top:20px">
+        <h1 style="margin-left:12px;color:orange;font-size:50px">Mail</h1>
+        @using (Html.BeginForm("Mail", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <form id="clear" style="align-content:center" class="form-horizontal" role="form">
+
+                @*<div style="margin-top:30px" class="form-group">
+                        <b> <label for="formGroupInputLarge2" class="col-sm-2 control-label">From</label></b>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.From, new { @class = "form-control", placeholder = "From...", tabindex = 2 })
+                            @Html.ValidationMessageFor(m => m.From)
+                        </div>
+                    </div>*@
+
+
+                <div style="margin-top:30px" class="form-group">
+                    <b> <label for="formGroupInputLarge2" class="col-sm-2 control-label">Email</label></b>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.To, new { @class = "form-control", placeholder = "Email...", tabindex = 2})
+                        @Html.ValidationMessageFor(m => m.To)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> <label for="formGroupInputLarge2" class="col-sm-2 control-label">Konu</label></b>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "Konu...", tabindex = 2, @Value = "ONAY" })
+                        @Html.ValidationMessageFor(m => m.Subject)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b><label for="formGroupInputLarge3" class="col-sm-2 control-label">Mesaj</label></b>
+                    <div class="col-sm-5">
+                        @Html.TextAreaFor(m => m.Body, new { @class = "form-control", placeholder = "Mesaj...", tabindex = 3, rows = "7", cols = "25" })
+                        @Html.ValidationMessageFor(m => m.Body)
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button style="margin-bottom:100px" value="postMail" id="btnSend" type="submit" class="btn btn-warning btn-lg">Gönder</button>
+                    </div>
+                </div>
+            </form>
+
+
+            @*<div style="margin-bottom:20px" class="alert alert-success" role="alert">
+                    @ViewBag.Message
+                </div>*@
+
+        }
+    </div>
+</body>
+
+<style>
+    .green {
+        color: green;
+    }
+</style>
+
+@section Scripts{
+
+    <script src="~/Js/UserMail.js"></script>
+}
+

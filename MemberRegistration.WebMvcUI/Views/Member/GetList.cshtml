@@ -1,0 +1,45 @@
+﻿@model  MemberRegistration.WebMvcUI.Models.MemberGetListViewModel
+@{
+    ViewBag.Title = "GetList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Html.Partial("_LayoutCssPartial")
+<body style="background-color:silver">
+    <div class="container-fluid">
+        <h2 style="text-align:center">  <b>Başvuru Listesi</b></h2>
+        <table id="tbl1" class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>İsim</th>
+                    <th>Soyisim</th>
+                    <th>Email</th>
+                    <th>Başvuru Tipi</th>
+                    <th>Mail</th>
+                    <th>Red</th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>İsim</th>
+                    <th>Soyisim</th>
+                    <th>Email</th>
+                    <th>Başvuru Tipi</th>
+                    <th>Mail</th>
+                    <th>Red</th>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+</body>
+
+
+@section Scripts{
+
+    <script src="~/Js/MemberDatatable.js"></script>
+}

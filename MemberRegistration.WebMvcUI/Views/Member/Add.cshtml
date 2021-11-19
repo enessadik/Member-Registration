@@ -1,0 +1,116 @@
+﻿@model MemberRegistration.WebMvcUI.Models.MemberAddViewModel
+
+@*@model(MemberRegistration.Entities.Concrete.Member, MemberRegistration.Entities.Concrete.Recourse)*@  @*tuple ile deneyecem sonra*@
+
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<body style="background-color:silver">
+    <div style="background-color:lightslategray;margin-top:1px" class="container">
+        <div class="py-2 text-center">
+            <img class="d-block mx-auto mb-1" src="~/Resim/r.png" alt="" width="144" height="144">
+            <h2>Kayıt Formu</h2>
+            <p class="lead">Lütfen bilgilerinizi giriniz</p>
+            @*<h1 style="text-align:center">
+                    <span style="background-color:greenyellow">
+                        @ViewBag.Mesaj
+                    </span>
+                </h1>*@
+
+            <p style="color:yellow" class="lead">@Html.ValidationMessage("MemberException")</p>
+
+
+
+        </div>
+
+        <div class="row">
+
+            <div id="clear" class="col-md-12 order-md-1">
+
+                <h5 style="color:red;margin-right:20px" class="text-right">1-Covid</h5>
+                <h5 style="color:greenyellow; margin-right: 30px" class="text-right">2-Yaşlı</h5>
+                <h5 style="color: blue; margin-right: 10px" class="text-right">3-Engelli</h5>
+                <h4 class="mb-3">Bilgileriniz</h4>
+                
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="firstName">Ad</label>
+                            @Html.TextBoxFor(m => m.Member.FirstName, new { @class = "form-control", placeholder = "Adınız..." })
+                            @Html.ValidationMessageFor(model => model.Member.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="lastName">Soyad</label>
+                            @Html.TextBoxFor(m => m.Member.LastName, new { @class = "form-control", placeholder = "Soyadınız..." })
+                            @Html.ValidationMessageFor(model => model.Member.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        @*<div class="col-md-4 mb-3">
+                            <label for="recourseType">Başvuru Tipi</label>
+                            @Html.TextBoxFor(m => m.Member.RecoursesId, new { @class = "form-control", placeholder = "Başvuru Tipiniz..." })
+                            @Html.ValidationMessageFor(model => model.Member.RecoursesId, "", new { @class = "text-danger" })
+                        </div>*@
+
+                        <div class="col-md-4 mb-3">
+                                <label for="recourseType">Başvuru Tipi</label>
+                                @Html.DropDownListFor(m => m.Member.RecoursesId, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Member.RecoursesId, "", new { @class = "text-danger" })
+                            </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tcNo">Tc Kimlik Numara</label>
+                        @Html.TextBoxFor(m => m.Member.TcNo, new { @class = "form-control", placeholder = "T.C..." })
+                        @Html.ValidationMessageFor(model => model.Member.TcNo, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        @Html.TextBoxFor(m => m.Member.Email, new { @class = "form-control", placeholder = "Emailiniz..." })
+                        @Html.ValidationMessageFor(model => model.Member.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address">Doğum Tarihi</label>
+                        @Html.TextBoxFor(m => m.Member.DateOfBirth, new { @class = "form-control", placeholder = "Doğum Tarihiniz..." })
+                        @Html.ValidationMessageFor(model => model.Member.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <button id="btnKayit" value="Kayit" style="margin-bottom:5px" class="btn btn-info btn-lg btn-block" type="submit">Kayıt ol</button>
+                    @*<div class="alert alert-success" role="alert">
+                            @ViewBag.Mesaj
+                        </div>*@
+                }
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+
+    $("#btnKayit").click(function () {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Başvurunuz Alındı...',
+            showConfirmButton: false,
+            timer: 3500
+        })
+
+    });
+
+
+</script>
+
+

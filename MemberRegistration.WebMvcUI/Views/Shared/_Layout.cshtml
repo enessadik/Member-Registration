@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @Html.Partial("_LayoutCssPartial")
+</head>
+@Html.Partial("_navbarPartialView")
+
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        @Html.Partial("_footerPartialView")
+    </footer>
+    @Html.Partial("_LayoutJsPartial")
+    @RenderSection("Scripts", false)
+</body>
+
+</html>

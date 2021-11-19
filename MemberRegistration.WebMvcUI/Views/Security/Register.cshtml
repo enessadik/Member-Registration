@@ -1,0 +1,51 @@
+﻿@model MemberRegistration.Entities.Concrete.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+    <link href="~/Content/css/Animasyon.css" rel="stylesheet" />
+
+</head>
+<body class="animation-area">
+    <div class="container" style="margin-left:50px">
+        <h2 style="color:white;font-size:80px">Kayıt Ol</h2>
+
+
+        <b style="color:gold"> @ViewBag.Mesaj</b>
+
+        @using (Html.BeginForm("Register", "Security", FormMethod.Post))
+        {
+            <div style="margin-top:40px" class=" form-group">
+                <b style="color: white; font-size: 30px">@Html.Label("Kullanıcı Adı:")</b>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "col-form-label-lg", placeholder = "Kullanıcı Adı..." })
+            </div>
+
+            <div class=" form-group">
+                <b style="color: white; margin-left: 102px; font-size: 30px"> @Html.Label("Şifre:")</b>
+                @Html.TextBoxFor(m => m.Password, new { @class = "col-form-label-lg", placeholder = "Şifre...", type = "password" })
+            </div>
+
+            <div class=" form-group">
+                <b style="color: white; margin-left: 25px; font-size: 30px"> @Html.Label("Şifre Onay:")</b>
+                @Html.TextBoxFor(m => m.Password, new { @class = "col-form-label-lg", placeholder = "Şifre Onay...", type = "password" })
+            </div>
+            <div class="row">
+                <button style="margin-bottom:100px; margin-left:200px; color :white" type="submit" class="btn btn btn-info">Kayıt Ol</button>
+                <h2 style="margin-left:50px"><a class="btn btn btn-warning" style="color:white" href="/Security/Login">Geri Dön</a></h2>
+            </div>
+
+        }
+    </div>
+
+</body>
+
+</html>

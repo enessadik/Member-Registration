@@ -1,0 +1,18 @@
+﻿using MemberRegistration.Entities.Concrete;
+using MemberRegistration.Entities.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MemberRegistration.Business.Abstract
+{
+    public interface IMemberService
+    {
+        void Add(Member member);
+        List<Member> GetList();
+        List<MemberForRecourseDto> GetRecourseList();
+        
+    }
+}

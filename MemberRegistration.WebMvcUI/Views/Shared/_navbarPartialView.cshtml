@@ -1,0 +1,29 @@
+﻿<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+    <b><a style="color:dodgerblue" class="navbar-brand" href="/Member/Anasayfa">ANKARA BÜYÜKŞEHİR BELEDİYESİ</a></b>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            @if (User.IsInRole("User"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Member/Add">Başvuru Formu</a>
+                </li>
+            }
+            <li class="nav-item">
+                <a class="nav-link" href="/Member/GetList">Başvuru Listesi</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/Security/Login">Çıkış</a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <h5><b style="color:greenyellow;margin-right:40px">Hoşgeldiniz  @HttpContext.Current.User.Identity.Name</b></h5>
+        </form>
+    </div>
+</nav>

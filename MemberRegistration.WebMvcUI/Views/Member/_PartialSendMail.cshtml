@@ -1,0 +1,70 @@
+﻿@model MemberRegistration.Entities.Concrete.SmtpSettings
+<div>
+
+    <form id="myForm" class="form-horizontal" role="form">
+        <div class="form-group">
+            <b> <label for="formGroupInputLarge2" class="col-sm-2 control-label">Email</label></b>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.To, new { @class = "form-control", placeholder = "Email...", tabindex = 2, @ViewBag.Title })
+                @Html.ValidationMessageFor(m => m.To)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b> <label for="formGroupInputLarge2" class="col-sm-2 control-label">Konu</label></b>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "Konu...", tabindex = 2 })
+                @Html.ValidationMessageFor(m => m.Subject)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b><label for="formGroupInputLarge3" class="col-sm-2 control-label">Mesaj</label></b>
+            <div class="col-sm-5">
+                @Html.TextAreaFor(m => m.Body, new { @class = "form-control", placeholder = "Mesaj...", tabindex = 3, rows = "7", cols = "25" })
+                @Html.ValidationMessageFor(m => m.Body)
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-sm-offset-2 col-sm-10">
+                <button style="margin-bottom:100px" type="submit" class="btn btn-success btn-lg">Gönder</button>
+
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            $("#loaderDiv").show();
+
+            var myformdata = $("#myForm").serialize();
+
+            $.ajax({
+
+                type: "POST",
+                url: "/Member/GetList",
+                data: myformdata,
+                success: function () {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    window.location.href = "/Member/GetList";
+
+                }
+
+            })
+        })
+
+    })
+
+
+</script>
+
